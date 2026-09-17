@@ -1,0 +1,39 @@
+[
+  {
+    "product_id": "t001",
+    "title": "40L Waterproof Camping Backpack",
+    "platform": "Temu",
+    "category_level1": "Outdoor",
+    "category_level2": "Camping",
+    "specs": {
+      "Capacity": "40L",
+      "Material": "Nylon",
+      "Weight": "1.2kg"
+    },
+    "price": "79.99 USD",
+    "description": "Water resistant for hiking trip, adjustable shoulder strap",
+    "tags": [
+      "Outdoor",
+      "Camping",
+      "Nylon"
+    ]
+  },
+  {
+    "product_id": "t002",
+    "title": "Women Running Shoes Non Slip",
+    "platform": "Amazon",
+    "category_level1": "Shoes",
+    "category_level2": "Running",
+    "specs": {
+      "Size": "US6-US9",
+      "Material": "Rubber sole"
+    },
+    "price": "52.99 USD",
+    "description": "Breathable for daily running",
+    "tags": [
+      "Running",
+      "Rubber sole",
+      "Shoes"
+    ]
+  }
+]

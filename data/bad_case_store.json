@@ -1,0 +1,8 @@
+[
+  {
+    "query": "Find a ski jacket under $500",
+    "model": "GPT-4o",
+    "type": "\u77e5\u8bc6\u5e93\u7f3a\u5931",
+    "reason": "\u77e5\u8bc6\u5e93\u6ca1\u6709\u6ed1\u96ea\u5939\u514b\u5546\u54c1\uff0c\u6a21\u578b\u4ecd\u7136\u63a8\u8350\u4ea7\u54c1\uff0c\u4ea7\u751f\u5e7b\u89c9"
+  }
+]
