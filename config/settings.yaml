@@ -1,0 +1,12 @@
+﻿# 项目全局配置
+paths:
+  raw_data: "data/raw/products.json"
+  processed_data: "data/processed/cleaned_products.json"
+  vector_db: "data/vector_db"
+
+llm:
+  model_name: "qwen-turbo"
+  temperature: 0.3
+
+retrieval:
+  top_k: 3
