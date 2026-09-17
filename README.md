@@ -1,85 +1,70 @@
-﻿
-# Cross-border E-commerce AI Shopping Guide Agent
+﻿# E-commerce Smart Customer Agent
+AI电商智能客服项目
 
-> 
-> AI 电商商品导购 Agent｜适配海外 Temu/Amazon 跨境场景
-> 项目定位：AI 电商产品实习项目，完整覆盖商品知识库建设、数据清洗、Prompt 迭代、多模型评测与 Bad Case 量化归因。
+## 项目简介
+本项目实现面向电商场景的AI商品咨询助手，包含商品数据清洗、标签自动构建、用户问答评测模块。
+- 对原始商品JSON数据做清洗，过滤脏数据
+- 自动抽取商品标签，用于检索召回
+- 用户Query评测模块，自动统计模型回答Bad Case，量化效果
 
-## 📌 Project Background
-
-Overseas cross-border e-commerce users face difficulty selecting goods from massive product inventory.
-This AI Agent acts as a shopping guide for US consumers, retrieving products from standardized commodity knowledge base, answering product specs and making recommendations.
-
-## 📊 Competitor Analysis
-
-See full report: [competitor_analysis.md](./product_docs/competitor_analysis.md)
-Key pain point of existing AI shopping assistant: LACK of standardized product knowledge base, easy to produce LLM hallucination.
-
-## 🧩 Product Design
-
-### 1. Commodity Knowledge Base & Data Standard
-
-- Raw overseas product data from Temu & Amazon
-- Data cleaning script: remove noise, unify unit, filter dirty data
-- Multi-level category + attribute tag system
-Data spec: [data_spec.md](./product_docs/data_spec.md)
-
-### 2. Agent Workflow
-
-User English Query → Query understanding → RAG retrieve products from knowledge base → Prompt constraint → LLM response → Record case for evaluation
-
-### 3. Prompt Iteration History
-
-- V1: Simple prompt, easy hallucination
-- V2: Add role & basic constraint
-- V3 Final Version: Hard rule + fixed output format, limit model to only use knowledge base data
-
-### 4. Evaluation Framework & Bad Case Analysis (Core Module)
-
-- Test dataset: 25 real user English shopping queries
-- Evaluate GPT-4o / Gemini / Claude on 3 metrics: Accuracy, Relevance, Compliance
-- Auto classify bad case into 4 types:
-  1. 知识库缺失
-  2. 召回错误
-  3. Prompt 幻觉
-  4. 标签匹配错误
-- Output quantitative statistic report to support product iteration
-
-## 🖼️ Demo Screenshot
-
-## 📁 Project Structure
-
-```
-├── data/                    # 商品数据集 & 评测集
-├── product_docs/            # Product documents: PRD, competitor analysis
+## 项目结构
+├── data/
+│   ├── raw/                # 原始商品数据
+│   ├── cleaned/            # 清洗后带标签商品数据
+│   ├── test_queries.json   # 用户测试问句
+│   └── bad_case_store.json # 评测失败案例存储
 ├── src/
-│   ├── data_cleaner.py      # Data cleaning & structuring
-│   ├── tag_builder.py       # Product tag system
-│   ├── agent.py             # AI导购Agent主逻辑
-│   └── evaluator.py         # Multi-model evaluation & bad case analysis
+│   ├── data_cleaner.py     # 商品数据清洗脚本
+│   ├── tag_builder.py      # 商品标签构建脚本
+│   └── evaluator.py        # 问答效果评测脚本
+├── product_docs/           # 产品文档：PRD、竞品分析、数据规范
+├── .gitignore              # 忽略虚拟环境、缓存文件
 └── README.md
-```
-
-## 🚀 Quick Start
 
 ```
-# 1. Clean raw product data
+
+## 环境安装
+```bash
+# 创建虚拟环境
+python -m venv venv
+# 激活虚拟环境
+# Windows
+venv\Scripts\activate
+# Mac/Linux
+source venv/bin/activate
+
+# 安装依赖（后续补充requirements.txt）
+pip install -r requirements.txt
+```
+
+## 运行方式
+
+1. 商品数据清洗
+
+```
 python src/data_cleaner.py
-# 2. Build product tags
+```
+
+2. 商品标签构建
+
+```
 python src/tag_builder.py
-# 3. Run evaluation & bad case statistics
+```
+
+3. 模型问答效果评测
+
+```
 python src/evaluator.py
 ```
 
-## 📋 Product PRD
+## 项目亮点
 
-[product_prd.md](./product_docs/product_prd.md)
+1. 模块化设计：数据处理、标签构建、评测解耦，方便迭代扩展
+2. Bad Case 自动收集：记录回答失败的用户 query，用于迭代 Prompt
+3. 标准化数据规范，配套 PRD 与竞品分析文档，贴合真实产品开发流程
 
-## ✨ Project Summary
+## 后续规划
 
-This project fully simulates the daily work of AI E-commerce Product Intern(Product direction):
-
-1. Build commodity knowledge base, data cleaning & quality check
-2. Overseas e-commerce competitor research
-3. AI Agent product design, Prompt engineering
-4. Multi-model evaluation, bad case quantitative analysis and product iteration.
+- 实现对话 Agent 主逻辑，接入大模型完成商品问答
+- 增加评测结果可视化图表
+- 增加向量检索，支持商品知识库召回
